@@ -1,4 +1,4 @@
-package cat.fact.client
+package com.yonatankarpcat.fact.client.adopters
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import retrofit2.http.GET
