@@ -94,3 +94,4 @@ configure<SpotlessExtension> {
 }
 
 tasks.findByName("spotlessKotlinGradle")?.dependsOn("spotlessKotlin")
+tasks.findByName("spotlessKotlin")?.dependsOn("compileKotlin")
