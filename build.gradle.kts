@@ -11,7 +11,21 @@ repositories {
     mavenCentral()
 }
 
+version = "0.0.1-SNAPSHOT"
+
 dependencies {
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+    // Serialization
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
+
+    // Retrofit
+    api("com.squareup.okhttp3:okhttp:4.11.0")
+    api("com.squareup.retrofit2:retrofit:2.9.0")
+    api("com.squareup.retrofit2:converter-jackson:2.9.0")
+
     // Tests
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
