@@ -1,6 +1,8 @@
+import com.diffplug.gradle.spotless.SpotlessExtension
+
 plugins {
     id("maven-publish")
-    id("java")
+    id("com.diffplug.spotless") version "6.20.0"
     `java-library`
     kotlin("jvm") version "1.9.0"
 }
@@ -31,14 +33,14 @@ tasks.jar {
     manifest {
         attributes(
             "Implementation-Title" to project.name,
-            "Implementation-Version" to project.version
+            "Implementation-Version" to project.version,
         )
     }
     from(
         configurations.runtimeClasspath
             .get()
             .filter { it.exists() }
-            .map { if (it.isDirectory) it else zipTree(it) }
+            .map { if (it.isDirectory) it else zipTree(it) },
     )
     exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "META-INF/LICENSE.txt")
     includeEmptyDirs = false
@@ -67,3 +69,28 @@ publishing {
         }
     }
 }
+
+configure<SpotlessExtension> {
+    kotlin {
+        target(
+            fileTree(".") {
+                include("**/*.kt")
+                exclude("**/.gradle/**")
+            },
+        )
+        // see https://github.com/shyiko/ktlint#standard-rules
+        ktlint()
+    }
+    kotlinGradle {
+        target(
+            fileTree(".") {
+                include("**/*.gradle.kts")
+                exclude("**/.gradle/**")
+            },
+        )
+        trimTrailingWhitespace()
+        ktlint()
+    }
+}
+
+tasks.findByName("spotlessKotlinGradle")?.dependsOn("spotlessKotlin")
