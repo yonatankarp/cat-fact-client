@@ -79,9 +79,9 @@ jobs:
               - 'gradlew.bat'
               - 'settings.gradle.kts'
 
-      - name: Gradle Test
+      - name: Gradle Build
         if: steps.changes.outputs.source_code == 'true'
-        id: tests
+        id: build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./gradlew build

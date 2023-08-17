@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  artifact:
+    name: Artifact
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Latest Release
+        id: previoustag
+        run: echo "tag=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+
+      - name: Set Artifact Version
+        run: |
+          echo Artifact version: ${{ steps.previoustag.outputs.tag }}
+          echo "version=${{ steps.previoustag.outputs.tag }}" > gradle.properties
+
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          distribution: 'temurin'
+          #Instead of manually configure caching of gradle, use an action which is provided. Details here: https://github.com/actions/setup-java
+          cache: gradle
+
+      - name: Gradle Build
+        id: build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew build
+
+      - name: Publish Artifact
+        id: publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ./gradlew publishMavenPublicationToGitHubPackagesRepository
