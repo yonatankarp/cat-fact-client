@@ -79,11 +79,9 @@ jobs:
               - 'gradlew.bat'
               - 'settings.gradle.kts'
 
-      - name: Gradle Test
+      - name: Gradle Build
         if: steps.changes.outputs.source_code == 'true'
-        id: tests
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: build
         run: ./gradlew build
 
   dependabot_auto_merge:
