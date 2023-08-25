@@ -1,7 +1,7 @@
-package com.yonatankarpcat.fact.client.adopters
+package com.yonatankarp.cat.fact.client.adopters
 
-import com.yonatankarpcat.fact.client.ports.CatFactProvider
-import com.yonatankarpcat.fact.client.ports.Fact
+import com.yonatankarp.cat.fact.client.ports.CatFactProvider
+import com.yonatankarp.cat.fact.client.ports.Fact
 
 internal class MockCatFactProvider : CatFactProvider {
     override suspend fun get(numberOfFacts: Int) =

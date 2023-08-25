@@ -1,10 +1,10 @@
-package com.yonatankarpcat.fact.client.ports
+package com.yonatankarp.cat.fact.client.ports
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.yonatankarpcat.fact.client.adopters.ApiCatFactProvider
-import com.yonatankarpcat.fact.client.adopters.MockCatFactProvider
-import com.yonatankarpcat.fact.client.ports.ProviderType.API
-import com.yonatankarpcat.fact.client.ports.ProviderType.MOCK
+import com.yonatankarp.cat.fact.client.adopters.ApiCatFactProvider
+import com.yonatankarp.cat.fact.client.adopters.MockCatFactProvider
+import com.yonatankarp.cat.fact.client.ports.ProviderType.API
+import com.yonatankarp.cat.fact.client.ports.ProviderType.MOCK
 
 data object CatFactFactory {
     fun getInstance(type: ProviderType, objectMapper: ObjectMapper): CatFactProvider =

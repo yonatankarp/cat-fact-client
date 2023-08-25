@@ -1,8 +1,8 @@
-package com.yonatankarpcat.fact.client.adopters
+package com.yonatankarp.cat.fact.client.adopters
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.yonatankarpcat.fact.client.ports.CatFactProvider
-import com.yonatankarpcat.fact.client.ports.Fact
+import com.yonatankarp.cat.fact.client.ports.CatFactProvider
+import com.yonatankarp.cat.fact.client.ports.Fact
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.coroutineScope
@@ -13,14 +13,15 @@ import retrofit2.create
 
 private const val API_BASE_URL = "https://catfact.ninja/"
 
-internal class ApiCatFactProvider(objectMapper: ObjectMapper) : CatFactProvider {
-
-    private var client = Retrofit.Builder()
+internal class ApiCatFactProvider(
+    objectMapper: ObjectMapper,
+    private var client: CatFactClient = Retrofit.Builder()
         .baseUrl(API_BASE_URL)
         .client(OkHttpClient.Builder().build())
         .addConverterFactory(JacksonConverterFactory.create(objectMapper))
         .build()
-        .create<CatFactClient>()
+        .create<CatFactClient>(),
+) : CatFactProvider {
 
     override suspend fun get(numberOfFacts: Int): Set<Fact> =
         coroutineScope {

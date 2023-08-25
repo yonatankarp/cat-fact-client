@@ -1,4 +1,4 @@
-package com.yonatankarpcat.fact.client.adopters
+package com.yonatankarp.cat.fact.client.adopters
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import retrofit2.http.GET
@@ -9,6 +9,4 @@ internal interface CatFactClient {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-internal data class CatFactResponse(
-    val fact: String,
-)
+internal data class CatFactResponse(var fact: String)

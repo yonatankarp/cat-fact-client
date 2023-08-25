@@ -1,4 +1,4 @@
-package com.yonatankarpcat.fact.client.ports
+package com.yonatankarp.cat.fact.client.ports
 
 interface CatFactProvider {
 
