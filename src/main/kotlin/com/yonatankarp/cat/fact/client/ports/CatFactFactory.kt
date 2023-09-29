@@ -7,7 +7,10 @@ import com.yonatankarp.cat.fact.client.ports.ProviderType.API
 import com.yonatankarp.cat.fact.client.ports.ProviderType.MOCK
 
 data object CatFactFactory {
-    fun getInstance(type: ProviderType, objectMapper: ObjectMapper): CatFactProvider =
+    fun getInstance(
+        type: ProviderType,
+        objectMapper: ObjectMapper,
+    ): CatFactProvider =
         when (type) {
             API -> ApiCatFactProvider(objectMapper)
             MOCK -> MockCatFactProvider()
