@@ -14,7 +14,6 @@ import retrofit2.create
 import kotlin.test.assertEquals
 
 internal class ApiCatFactProviderTest {
-
     private lateinit var mockWebServer: MockWebServer
     private lateinit var catFactClient: CatFactClient
     private lateinit var apiCatFactProvider: ApiCatFactProvider
@@ -23,12 +22,13 @@ internal class ApiCatFactProviderTest {
     fun setUp() {
         mockWebServer = MockWebServer()
         mockWebServer.start()
-        catFactClient = Retrofit.Builder()
-            .baseUrl(mockWebServer.url("/"))
-            .client(OkHttpClient())
-            .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
-            .build()
-            .create()
+        catFactClient =
+            Retrofit.Builder()
+                .baseUrl(mockWebServer.url("/"))
+                .client(OkHttpClient())
+                .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
+                .build()
+                .create()
         apiCatFactProvider = ApiCatFactProvider(jacksonObjectMapper(), catFactClient)
     }
 
@@ -38,14 +38,15 @@ internal class ApiCatFactProviderTest {
     }
 
     @Test
-    fun `should get a cat fact successfully`() = runTest {
-        mockWebServer.enqueue(MockResponse().setBody(CAT_FACT_RESPONSE))
+    fun `should get a cat fact successfully`() =
+        runTest {
+            mockWebServer.enqueue(MockResponse().setBody(CAT_FACT_RESPONSE))
 
-        val catFact = apiCatFactProvider.get()
+            val catFact = apiCatFactProvider.get()
 
-        assertEquals(1, catFact.size)
-        assertEquals(CAT_FACT, catFact.first().value)
-    }
+            assertEquals(1, catFact.size)
+            assertEquals(CAT_FACT, catFact.first().value)
+        }
 
     companion object {
         private const val CAT_FACT =

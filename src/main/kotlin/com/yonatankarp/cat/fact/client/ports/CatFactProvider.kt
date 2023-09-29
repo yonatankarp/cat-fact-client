@@ -1,7 +1,6 @@
 package com.yonatankarp.cat.fact.client.ports
 
 interface CatFactProvider {
-
     /**
      * Get a random cat facts.
      *
