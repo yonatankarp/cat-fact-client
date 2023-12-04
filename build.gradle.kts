@@ -2,7 +2,7 @@ import com.diffplug.gradle.spotless.SpotlessExtension
 
 plugins {
     id("maven-publish")
-    id("com.diffplug.spotless") version "6.23.2"
+    id("com.diffplug.spotless") version "6.23.3"
     `java-library`
     kotlin("jvm") version "1.9.21"
 }
