@@ -4,12 +4,13 @@
 [release-state]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/release.yml
 [gradle-upgrade-badge]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/update-gradle-wrapper.yml/badge.svg
 [gradle-upgrade-state]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/update-gradle-wrapper.yml
-[linters-badge]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/linting.yml/badge.svg
-[linters-state]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/linting.yml
+[ci-badge]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/ci.yml/badge.svg
+[ci-state]: https://github.com/yonatankarp/cat-fact-client/actions/workflows/ci.yml
 
-| **Type**     | **Status**                                                                                                                                            |
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CI pipelines | [![Release][release-badge]][release-state] [![Gradle Upgrade][gradle-upgrade-badge]][gradle-upgrade-state] [![Linters][linters-badge]][linters-state] |
+
+| **Type**     | **Status**                                                                                                                              |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| CI pipelines | [![Release][release-badge]][release-state] [![Gradle Upgrade][gradle-upgrade-badge]][gradle-upgrade-state] [![CI][ci-badge]][ci-state]  |
 
 A Client library in Kotlin for `https://catfact.ninja/fact`
 
