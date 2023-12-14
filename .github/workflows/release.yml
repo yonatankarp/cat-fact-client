@@ -6,8 +6,8 @@ on:
 
 jobs:
   artifact:
-    uses: yonatankarp/github-actions/.github/workflows/release.yml@v1
+    uses: yonatankarp/github-actions/.github/workflows/release-jar.yml@v1
     with:
       tag: ${{ github.event.release.tag_name }}
     secrets:
-      GITHUB_PATH: ${{ secrets.REVIEWER_GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.REVIEWER_GITHUB_TOKEN }}
