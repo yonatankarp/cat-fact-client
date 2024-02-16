@@ -14,7 +14,7 @@ repositories {
 dependencies {
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 
     // Serialization
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.16.1")
