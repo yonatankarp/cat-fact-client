@@ -9,4 +9,6 @@ internal interface CatFactClient {
 }
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-internal data class CatFactResponse(var fact: String)
+internal data class CatFactResponse(
+    var fact: String,
+)

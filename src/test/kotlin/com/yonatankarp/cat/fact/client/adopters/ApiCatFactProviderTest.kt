@@ -23,7 +23,8 @@ internal class ApiCatFactProviderTest {
         mockWebServer = MockWebServer()
         mockWebServer.start()
         catFactClient =
-            Retrofit.Builder()
+            Retrofit
+                .Builder()
                 .baseUrl(mockWebServer.url("/"))
                 .client(OkHttpClient())
                 .addConverterFactory(JacksonConverterFactory.create(jacksonObjectMapper()))
