@@ -16,7 +16,8 @@ private const val API_BASE_URL = "https://catfact.ninja/"
 internal class ApiCatFactProvider(
     objectMapper: ObjectMapper,
     private var client: CatFactClient =
-        Retrofit.Builder()
+        Retrofit
+            .Builder()
             .baseUrl(API_BASE_URL)
             .client(OkHttpClient.Builder().build())
             .addConverterFactory(JacksonConverterFactory.create(objectMapper))
@@ -25,9 +26,10 @@ internal class ApiCatFactProvider(
 ) : CatFactProvider {
     override suspend fun get(numberOfFacts: Int): Set<Fact> =
         coroutineScope {
-            (1..numberOfFacts).map {
-                async { client.fact() }
-            }.awaitAll()
+            (1..numberOfFacts)
+                .map {
+                    async { client.fact() }
+                }.awaitAll()
                 .map { Fact(it.fact) }
                 .toSet()
         }
