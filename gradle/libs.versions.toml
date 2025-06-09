@@ -1,0 +1,48 @@
+[versions]
+jackson = "2.19.0"
+junit-jupiter = "5.13.3"
+kotlinx-coroutines = "1.10.2"
+mockk = "1.14.4"
+okhttp = "4.12.0"
+retrofit = "3.0.0"
+
+[libraries]
+
+## Kotlin & Coroutines
+jackson-module-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jackson" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+
+## Retrofit & OkHttp
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-jackson = { group = "com.squareup.retrofit2", name = "converter-jackson", version.ref = "retrofit" }
+
+## Tests
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit-jupiter" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher" }
+kotlin-test-junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit5" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
+
+[bundles]
+
+kotlin = [
+    "jackson-module-kotlin",
+    "kotlinx-coroutines-core",
+    "kotlinx-coroutines-test"
+]
+
+retrofit = [
+    "okhttp",
+    "retrofit",
+    "retrofit-converter-jackson"
+]
+
+test = [
+    "junit-jupiter-engine",
+    "junit-platform-launcher",
+    "kotlin-test-junit5",
+    "mockk",
+    "mockwebserver"
+]
