@@ -12,25 +12,11 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.bundles.kotlin)
+    api(libs.bundles.retrofit)
 
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
-
-    // Serialization
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.1")
-
-    // Retrofit
-    api("com.squareup.okhttp3:okhttp:4.12.0")
-    api("com.squareup.retrofit2:retrofit:2.11.0")
-    api("com.squareup.retrofit2:converter-jackson:2.11.0")
-
-    // Tests
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
-    testImplementation("io.mockk:mockk:1.14.4")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation(libs.bundles.test)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
 java {
@@ -108,5 +94,16 @@ configure<SpotlessExtension> {
     }
 }
 
-tasks.findByName("spotlessKotlinGradle")?.dependsOn("spotlessKotlin")
-tasks.findByName("spotlessKotlin")?.dependsOn("compileKotlin")
+val taskDependencies =
+    mapOf(
+        "spotlessKotlinGradle" to listOf("spotlessKotlin"),
+        "spotlessKotlin" to listOf("compileKotlin"),
+        "compileTestKotlin" to listOf("spotlessKotlinGradle"),
+    )
+
+taskDependencies.forEach {
+    val task = it.key
+    it.value.forEach { dependsOn ->
+        tasks.findByName(task)!!.dependsOn(dependsOn)
+    }
+}
