@@ -20,7 +20,7 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.19.1")
 
     // Retrofit
-    api("com.squareup.okhttp3:okhttp:4.12.0")
+    api("com.squareup.okhttp3:okhttp:5.0.0")
     api("com.squareup.retrofit2:retrofit:2.11.0")
     api("com.squareup.retrofit2:converter-jackson:2.11.0")
 
@@ -28,7 +28,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.13.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
+    testImplementation("com.squareup.okhttp3:mockwebserver:5.0.0")
     testImplementation("io.mockk:mockk:1.14.4")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
