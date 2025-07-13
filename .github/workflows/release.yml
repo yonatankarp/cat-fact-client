@@ -5,6 +5,10 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   artifact:
     uses: yonatankarp/github-actions/.github/workflows/release-jar.yml@v1
