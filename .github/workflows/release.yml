@@ -1,13 +1,13 @@
 name: Release
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
 jobs:
   artifact:
-    uses: yonatankarp/github-actions/.github/workflows/release-jar.yml@v1
+    uses: yonatankarp/github-actions/.github/workflows/build-jar-artifact.yml@v1
     with:
       tag: ${{ github.event.release.tag_name }}
-    secrets:
-      GITHUB_PAT: ${{ secrets.REVIEWER_GITHUB_TOKEN }}
+      github-token: ${{ secrets.REVIEWER_GITHUB_TOKEN }}
