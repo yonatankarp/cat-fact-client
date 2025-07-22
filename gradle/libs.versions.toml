@@ -1,5 +1,5 @@
 [versions]
-jackson = "2.19.1"
+jackson = "2.19.2"
 junit-jupiter = "5.13.3"
 kotlinx-coroutines = "1.10.2"
 mockk = "1.14.5"
