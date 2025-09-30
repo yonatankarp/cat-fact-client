@@ -1,6 +1,6 @@
 [versions]
 jackson = "2.20.0"
-junit-jupiter = "5.13.4"
+junit-jupiter = "6.0.0"
 kotlinx-coroutines = "1.10.2"
 mockk = "1.14.5"
 okhttp = "5.1.0"
