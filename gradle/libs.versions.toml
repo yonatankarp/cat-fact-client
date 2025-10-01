@@ -2,7 +2,7 @@
 jackson = "2.20.0"
 junit-jupiter = "6.0.0"
 kotlinx-coroutines = "1.10.2"
-mockk = "1.14.5"
+mockk = "1.14.6"
 okhttp = "5.1.0"
 retrofit = "3.0.0"
 
