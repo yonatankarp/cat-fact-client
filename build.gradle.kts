@@ -37,15 +37,6 @@ tasks.jar {
             "Implementation-Version" to project.version,
         )
     }
-    from(
-        configurations.runtimeClasspath
-            .get()
-            .filter { it.exists() }
-            .map { if (it.isDirectory) it else zipTree(it) },
-    )
-    exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "META-INF/LICENSE.txt")
-    includeEmptyDirs = false
-    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
 
 publishing {
