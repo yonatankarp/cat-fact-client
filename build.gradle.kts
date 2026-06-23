@@ -1,8 +1,5 @@
-import com.diffplug.gradle.spotless.SpotlessExtension
-
 plugins {
     id("maven-publish")
-    id("com.diffplug.spotless") version "8.6.0"
     `java-library`
     kotlin("jvm") version "2.3.21"
 }
@@ -59,42 +56,5 @@ publishing {
                 }
             }
         }
-    }
-}
-
-configure<SpotlessExtension> {
-    kotlin {
-        target(
-            fileTree(".") {
-                include("**/*.kt")
-                exclude("**/.gradle/**")
-            },
-        )
-        // see https://github.com/shyiko/ktlint#standard-rules
-        ktlint()
-    }
-    kotlinGradle {
-        target(
-            fileTree(".") {
-                include("**/*.gradle.kts")
-                exclude("**/.gradle/**")
-            },
-        )
-        trimTrailingWhitespace()
-        ktlint()
-    }
-}
-
-val taskDependencies =
-    mapOf(
-        "spotlessKotlinGradle" to listOf("spotlessKotlin"),
-        "spotlessKotlin" to listOf("compileKotlin"),
-        "compileTestKotlin" to listOf("spotlessKotlinGradle"),
-    )
-
-taskDependencies.forEach {
-    val task = it.key
-    it.value.forEach { dependsOn ->
-        tasks.findByName(task)!!.dependsOn(dependsOn)
     }
 }
